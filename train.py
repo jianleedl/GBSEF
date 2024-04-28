@@ -54,7 +54,7 @@ if is_enhanced:
     syn_csv_path = config_data[dataset_name].syn_path
     syn.read_syn_csv(syn_csv_path)
     syn.build_word_index_map(vocab)
-    vocab.create_syn_vocab_latest(syn_csv_path[:-4] + '_label.csv', config_data[dataset_name].purity)
+    vocab.create_syn_vocab_latest(syn_csv_path[:-4] + '_label.csv', config_data[dataset_name].purity, config_data[dataset_name].vec_path)
 else: syn = None
 test_data = DataLoader(test_data, batch_size=batch)
 train_data = DataLoader(train_data, batch_size=batch, shuffle=True)

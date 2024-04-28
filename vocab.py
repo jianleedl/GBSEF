@@ -2,6 +2,7 @@ from tools import logging
 import numpy as np
 import csv
 import gb_accelerate
+import os
 
 class Vocab():
 
@@ -109,14 +110,19 @@ class Vocab():
             logging(f"have {label}, data shape {len(data)}, {len(data[0])}")
             return data
      
-    def create_syn_vocab_latest(self, path, purity):
-        data = self.read_syn_csv(path)
-        numbers, result, centers, _ = gb_accelerate.main(np.array(data), purity)
-        for id, number in enumerate(numbers):
-            for i in result[id]:
-                index = np.where((self.vectors == i[1:]).all(axis=1))
-                self.vectors[index, :] = centers[id][1:]
-        logging(f"create syn_vocab success! has {len(numbers)} balls")
+    def create_syn_vocab_latest(self, path, purity, vec_path):
+        if os.path.exists(vec_path):
+            self.vectors = np.load(vec_path)
+            logging(f"load syn_vocab success! from {vec_path}")
+        else:
+            data = self.read_syn_csv(path)
+            numbers, result, centers, _ = gb_accelerate.main(np.array(data), purity)
+            for id, number in enumerate(numbers):
+                for i in result[id]:
+                    index = np.where((self.vectors == i[1:]).all(axis=1))
+                    self.vectors[index, :] = centers[id][1:]
+            np.save(vec_path, self.vectors)
+            logging(f"create syn_vocab success! has {len(numbers)} balls")
       
 if __name__ == '__main__':
     pass

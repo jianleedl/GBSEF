@@ -111,6 +111,7 @@ class IMDBConfig():
         'TextCNN': r'./static/IMDB/TextCNN_adv.txt',
     }
     syn_path = r'./static/IMDB/synonymous.csv'
+    vec_path = r'./static/IMDB/vec.npy'
     purity = 0.85
     
 class AGNEWSConfig():
@@ -130,6 +131,7 @@ class AGNEWSConfig():
         'TextCNN': r'./static/AGNEWS/TextCNN_adv.txt',
     }
     syn_path = r'./static/AGNEWS/synonymous.csv'
+    vec_path = r'./static/AGNEWS/vec.npy'
     purity = 0.8
     
 class YAHOOConfig():
@@ -149,6 +151,7 @@ class YAHOOConfig():
         'TextCNN': r'./static/YAHOO/TextCNN_adv.txt',
     }
     syn_path = r'./static/YAHOO/synonymous.csv'
+    vec_path = r'./static/YAHOO/vec.npy'
     purity = 0.85
     
 config_data = {
