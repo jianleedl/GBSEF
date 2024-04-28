@@ -1,4 +1,4 @@
-## Granular-ball Sample Enhancement-based defense Framewor
+## Granular-ball Sample Enhancement-based defense Framework
 This is a defense architecture based on Pytorch implementation against text synonym substitution attacks
 ### Environment
 Our experiments environment is as below
